@@ -5,15 +5,10 @@ export interface SocialLink {
 }
 
 export interface BrandPalette {
-  /** Primary brand color used for icon backgrounds and OG accents */
   accent: string;
-  /** Foreground text/glyph color on the brand background */
   onAccent: string;
-  /** Page background for OG cards */
   bg: string;
-  /** Primary text on OG cards */
   ink: string;
-  /** Secondary text on OG cards */
   inkMuted: string;
 }
 
@@ -29,22 +24,22 @@ export interface BusinessDetails {
 }
 
 export const business: BusinessDetails = {
-  name: "STARTER CO",
-  tagline: "Build templates faster with our clean agnostic starter.",
-  email: "hello@starter.palmstreetweb.design",
-  phone: "(555) 123-4567",
-  address: "123 Palm Street, Suite 100, San Francisco, CA 94107",
-  url: "https://starter.palmstreetweb.design",
+  name: "KINETIK",
+  tagline: "A motion studio for brands that need to move.",
+  email: "studio@kinetik.palmstreetweb.design",
+  phone: "(323) 555-0166",
+  address: "942 Mateo Street, Los Angeles, CA 90021",
+  url: "https://kinetik.palmstreetweb.design",
   socials: [
-    { name: "Instagram", href: "https://instagram.com/starter" },
-    { name: "LinkedIn", href: "https://linkedin.com/company/starter" },
-    { name: "X", href: "https://x.com/starter" },
+    { name: "Instagram", href: "https://instagram.com/kinetik.studio" },
+    { name: "Vimeo", href: "https://vimeo.com/kinetik" },
+    { name: "Showreel", href: "#reel" },
   ],
   brand: {
-    accent: "#2563EB",
-    onAccent: "#FFFFFF",
-    bg: "#FFFFFF",
-    ink: "#111827",
-    inkMuted: "#4B5563",
+    accent: "#C9FF35",
+    onAccent: "#070707",
+    bg: "#070707",
+    ink: "#FAFAFA",
+    inkMuted: "#9A9A9A",
   },
 };

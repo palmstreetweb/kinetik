@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, Anton, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { business } from "@/lib/business";
 import { content } from "@/lib/content";
@@ -10,11 +10,18 @@ const inter = Inter({
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-serif",
+const anton = Anton({
+  variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
+  weight: ["400"],
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -99,7 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${inter.variable} ${anton.variable} ${jetbrains.variable} h-full antialiased`}
       style={{ scrollBehavior: "smooth" }}
     >
       <head>

@@ -2,38 +2,44 @@
 
 @theme {
   --font-sans: var(--font-sans), sans-serif;
-  --font-serif: var(--font-serif), serif;
+  --font-display: var(--font-display), sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 
   --color-bg: var(--bg);
   --color-bg-section: var(--bg-section);
+  --color-bg-card: var(--bg-card);
   --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
   --color-on-accent: var(--on-accent);
 }
 
 :root {
-  /* Default Neutral Theme: Clean Light mode */
-  --bg: #FFFFFF;
-  --bg-section: #F3F4F6;
-  --accent: #2563EB; /* Royal Blue */
-  --accent-hover: #1D4ED8;
-  --ink: #111827; /* Dark slate */
-  --ink-muted: #4B5563;
-  --on-accent: #FFFFFF;
+  /* KINETIK — graphite & acid */
+  --bg: #070707;
+  --bg-section: #0E0E0E;
+  --bg-card: #161616;
+  --accent: #C9FF35;
+  --accent-soft: rgba(201, 255, 53, 0.18);
+  --ink: #FAFAFA;
+  --ink-muted: #9A9A9A;
+  --ink-faint: #555555;
+  --on-accent: #070707;
 }
 
-/* Base resets & styles */
 html {
   scroll-behavior: smooth;
   height: 100%;
+  background: var(--color-bg);
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "ss02", "kern";
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
@@ -41,35 +47,56 @@ body {
   flex-direction: column;
 }
 
-/* Custom focus ring for accessibility compliance */
 *:focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-/* Custom selection styling */
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-on-accent);
 }
 
-/* Entry animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Display utility — Anton-style condensed */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* Underline that draws on hover (left → right) */
+.draw-link {
+  position: relative;
+  display: inline-block;
+}
+.draw-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.draw-link:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
-/* Reduced motion settings */
+/* Cursor dot when hovering CTA */
+.cursor-arrow::after {
+  content: " ↗";
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.cursor-arrow:hover::after {
+  transform: translate(4px, -4px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
